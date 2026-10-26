@@ -1,3 +1,6 @@
+# Most of the commands, the greeting and the email function follow the GeeksforGeeks article
+# "Voice Assistant using python" by Gaurav Kumar Jha (https://www.geeksforgeeks.org/voice-assistant-using-python/).
+# The custom-conversation loop follows GassistPi by Shivasiddharth (https://github.com/shivasiddharth/GassistPi), MIT licence.
 from talk import custom_conversation
 from talk import speak
 import speech_recognition as sr
@@ -120,7 +123,7 @@ if __name__ == '__main__':
  
         elif 'play music' in command or "play song" in command:
             speak("Here you go with music")
-            music_dir = "C:\\Users\\GAURAV\\Music"
+            music_dir = os.path.join(os.path.expanduser('~'), 'Music')
             songs = os.listdir(music_dir)
             print(songs)   
             random = os.startfile(os.path.join(music_dir, songs[1]))
@@ -199,9 +202,9 @@ if __name__ == '__main__':
         elif 'screenshot' in query:
             speak("And the file name would be...")
             name = takeCommand()
-            pyautogui.screenshot(f"File_Location{name}.png")
+            pyautogui.screenshot(os.path.join(os.path.expanduser('~'), 'Pictures', f"{name}.png"))
             speak("The screenshot has been taken sir, check this out")
-            os.startfile("File_Location")
+            os.startfile(os.path.join(os.path.expanduser('~'), 'Pictures'))
              
 
  
